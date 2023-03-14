@@ -1,0 +1,1391 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>韓</title>
+        <subtitle></subtitle>
+        <icon>https://www.jackfruit.top/images/favicon.ico</icon>
+        <link>https://www.jackfruit.top</link>
+        <author>
+          <name>Tian</name>
+        </author>
+        <description>欢迎来到❥憨憨的穗穗彬耶❥的个人博客</description>
+        <language>zh-CN</language>
+        <pubDate>Tue, 28 Feb 2023 00:02:49 +0800</pubDate>
+        <lastBuildDate>Tue, 28 Feb 2023 00:02:49 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/28/pageabout/</guid>
+            <title>pageabout</title>
+            <link>https://www.jackfruit.top/2023/02/28/pageabout/</link>
+            <pubDate>Tue, 28 Feb 2023 00:02:49 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;第一次编写个人博客づ-̄3-̄づ️~&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#第一次编写个人博客づ-̄3-̄づ️~&#34;&gt;#&lt;/a&gt; 第一次编写个人博客（づ￣3￣）づ╭❤️～&lt;/h3&gt;
+&lt;h5 id=&#34;收获&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#收获&#34;&gt;#&lt;/a&gt; 收获😊：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;	第一次编写博客是套用别人的方法使用的，外观、图片、CSS样式、渲染器等等等....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​	&lt;strong&gt;收获到许多，了解到一个网站是如何建成的（虽然是最简单搭建，用时：5 个小时多一点～～～）。比如说如何建仓库，无后端评论区，搜索引擎等，，，这些都是委托在第三方平台上搭建起来的，代码没改太多（都是 copy 别人的样式，主题，，）。现在先模仿，后期再慢慢摸索。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个网站我也会维护下去，但是至于是啥时候更新就不一定了。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/Zooker%E5%AE%89%E8%A3%85/</guid>
+            <title>Zooker安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/Zooker%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:36:51 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;zooker安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#zooker安装&#34;&gt;#&lt;/a&gt; zooker 安装&lt;/h1&gt;
+&lt;h3 id=&#34;一-解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-解压&#34;&gt;#&lt;/a&gt; 一、解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf zookeeper-3.4.6.tar.gz -C /opt/module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;二-修改配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-修改配置文件&#34;&gt;#&lt;/a&gt; 二、修改配置文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/zookeeper-3.4.6
+mkdir data
+cd data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-myid机器的id&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-myid机器的id&#34;&gt;#&lt;/a&gt; vi myid	机器的 ID&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;填入 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/zookeeper-3.4.6/conf
+
+mv zoo_sample.cfg zoo.cfg	改名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-zoocfg添加datadir的路径和添加server的配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-zoocfg添加datadir的路径和添加server的配置&#34;&gt;#&lt;/a&gt; vi zoo.cfg	添加 datadir 的路径和添加 server 的配置&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;dataDir=/opt/module/zookeeper-3.4.6/data
+server.1=master:2888:3888
+server.2=slave1:2888:3888
+server.3=slave2:2888:3888
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;三-配置zookeeper环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-配置zookeeper环境变量&#34;&gt;#&lt;/a&gt; 三、配置 Zookeeper 环境变量&lt;/h3&gt;
+&lt;h4 id=&#34;vi-etcprofile&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-etcprofile&#34;&gt;#&lt;/a&gt; vi /etc/profile&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;#set zookeeper environment  
+export ZOOKEEPER_HOME=/opt/module/zookeeper-3.4.6 
+export PATH=$PATH:$ZOOKEEPER_HOME/bin 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#生效环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;四-同步到其它虚拟机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-同步到其它虚拟机&#34;&gt;#&lt;/a&gt; 四、同步到其它虚拟机&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;scp -r /opt/module/zookeeper-3.4.6 root@slave1:/opt/module 
+
+scp -r /opt/module/zookeeper-3.4.6 root@slave2:/opt/module
+
+scp -r /etc/profile root@slave1:/etc/profile
+
+scp -r /etc/profile root@slave2:/etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#slave1和slave2都要执行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;五-修改分节点的myid文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-修改分节点的myid文件&#34;&gt;#&lt;/a&gt; 五、修改分节点的 myid 文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/zookeeper-3.4.6/data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-myid机器id&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-myid机器id&#34;&gt;#&lt;/a&gt; vi myid	机器 ID&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;分别为2和3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;六-启动zookeeper每个节点都要进行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-启动zookeeper每个节点都要进行&#34;&gt;#&lt;/a&gt; 六、启动 Zookeeper（每个节点都要进行）&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/zookeeper-3.4.6/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;zkServer.sh start		#开启服务
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;zkServer.sh status		#查看状态
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注：一个节点是 Leader，其余的结点是 Follower（Leader 不一定是主节点，系统随机分配的）。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/Sqoop%E5%AE%89%E8%A3%85/</guid>
+            <title>Sqoop安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/Sqoop%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:36:14 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;sqoop安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#sqoop安装&#34;&gt;#&lt;/a&gt; Sqoop 安装&lt;/h1&gt;
+&lt;h3 id=&#34;一-解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-解压&#34;&gt;#&lt;/a&gt; 一、解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf /opt/software/sqoop-1.4.2.bin__hadoop-2.0.0-alpha.tar.gz -C /opt/module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;二-配置profile文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-配置profile文件&#34;&gt;#&lt;/a&gt; 二、配置 profile 文件&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;vi /etc/profile&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#sqoop
+export SQOOP_HOME=/opt/module/sqoop-1.4.2.bin__hadoop-2.0.0-alpha
+export PATH=$PATH:$ZOOKEEPER_HOME/bin:$SQOOP_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile  (刷新profile文件)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;验证环境是否配置完成&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sqoop version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;三-修改sqoop-envsh文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-修改sqoop-envsh文件&#34;&gt;#&lt;/a&gt; 三、修改 sqoop-env.sh 文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/sqoop-1.4.2.bin__hadoop-2.0.0-alpha/conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;mv sqoop-env-template.sh sqoop-env.sh
+vi sqoop-env.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#Set path to where bin/hadoop is available
+export HADOOP_COMMON_HOME=/opt/module/hadoop-2.7.7
+
+#Set path to where hadoop-*-core.jar is available
+export HADOOP_MAPRED_HOME=/opt/module/hadoop-2.7.7
+
+#set the path to where bin/hbase is available
+export HBASE_HOME=
+
+#Set the path to where bin/hive is available
+export HIVE_HOME=/opt/module/apache-hive-2.3.4-bin
+
+#Set the path for where zookeper config dir is
+export ZOOCFGDIR=/opt/module/zookeeper-3.4.6/conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;将mysql关系型数据库驱动包放到sqooplib目录下&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#将mysql关系型数据库驱动包放到sqooplib目录下&#34;&gt;#&lt;/a&gt; 将 mysql 关系型数据库驱动包放到 sqoop/lib 目录下&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;cp /opt/software/mysql-connector-java-5.1.47-bin.jar /opt/module/sqoop-1.4.2.bin__hadoop-2.0.0-alpha/lib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;验证sqoop连接mysql数据库是否成功&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#验证sqoop连接mysql数据库是否成功&#34;&gt;#&lt;/a&gt; 验证 sqoop 连接 mysql 数据库是否成功&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;sqoop list-databases --connect jdbc:mysql://master:3306 --username root --password 123456
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/Spark%E5%AE%89%E8%A3%85/</guid>
+            <title>Spark安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/Spark%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:35:58 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;spark安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#spark安装&#34;&gt;#&lt;/a&gt; spark 安装&lt;/h1&gt;
+&lt;h3 id=&#34;一-解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-解压&#34;&gt;#&lt;/a&gt; 一、解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf /opt/software/spark-2.1.1-bin-hadoop2.7.tgz -C /opt/module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;二-配置spark-envsh文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-配置spark-envsh文件&#34;&gt;#&lt;/a&gt; 二、配置 spark-env.sh 文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;mv /opt/module/spark-2.1.1-bin-hadoop2.7 spark-2.1.1
+cd /opt/module/spark-2.1.1/conf
+cp spark-env.sh.template spark-env.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;vi &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3NwYXJrLWVudi5zaA==&#34;&gt;spark-env.sh&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export SPARK_MASTER_IP=master
+export SPARK_WORKER_MEMORY=8g
+export SCALA_HOME=/opt/module/scala-2.11.0
+export JAVA_HOME=/opt/module/jdk1.8
+export HADOOP_HOME=/opt/module/hadoop-2.7.7
+export HADOOP_CONF_DIR=/opt/module/hadoop-2.7.7/etc/hadoop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;三-修改slaves文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-修改slaves文件&#34;&gt;#&lt;/a&gt; 三、修改 slaves 文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cp slaves.template slaves
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;vi slaves&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;master
+slave1
+slave2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;四-配置spark环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-配置spark环境变量&#34;&gt;#&lt;/a&gt; 四、配置 Spark 环境变量&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;vi /etc/profile&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#spark
+export SPARK_HOME=/opt/module/spark-2.1.1
+export PATH=$PATH:$SPARK_HOME/bin
+export PATH=$PATH:$SPARK_HOME/sbin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#生效环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;五-同步其它虚拟机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-同步其它虚拟机&#34;&gt;#&lt;/a&gt; 五、同步其它虚拟机&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;scp -r /etc/profile root@slave1:/etc/profile	#将环境变量profile文件分发到slave1节点
+
+scp -r /etc/profile root@slave2:/etc/profile	#将环境变量profile文件分发到slave2节点
+
+scp -r /opt/module/spark-2.1.1 root@slave1:/opt/module	#将scala文件分发到slave1节点
+
+scp -r /opt/module/spark-2.1.1 root@slave2:/opt/module	#将scala文件分发到slave2节点
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#slave1和slave2都要执行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;六-开启spark环境只在master节点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-开启spark环境只在master节点&#34;&gt;#&lt;/a&gt; 六、开启 spark 环境（只在 master 节点）&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;/opt/module/spark-2.1.1/sbin/start-all.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;验证&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://192.168.23.48:8080
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/scala%E5%AD%A6%E4%B9%A0/</guid>
+            <title>scala学习</title>
+            <link>https://www.jackfruit.top/2023/02/27/scala%E5%AD%A6%E4%B9%A0/</link>
+            <category term="学习" scheme="https://www.jackfruit.top/categories/%E5%AD%A6%E4%B9%A0/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:35:41 +0800</pubDate>
+            <description><![CDATA[  ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/scala%E5%AE%89%E8%A3%85/</guid>
+            <title>scala安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/scala%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:35:27 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;scala安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#scala安装&#34;&gt;#&lt;/a&gt; scala 安装&lt;/h1&gt;
+&lt;h3 id=&#34;一-解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-解压&#34;&gt;#&lt;/a&gt; 一、解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf /opt/software/scala-2.11.0.tgz -C /opt/module 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;二-配置环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-配置环境&#34;&gt;#&lt;/a&gt; 二、配置环境&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/scala-2.11.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;vi /etc/profile&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#set scala
+export SCALA_HOME=/opt/module/scala-2.11.0
+export PATH=$PATH:$SCALA_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#生效环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;scala -version			#查看scala是否安装成功
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;三-同步其它虚拟机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-同步其它虚拟机&#34;&gt;#&lt;/a&gt; 三、同步其它虚拟机&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;scp -r /etc/profile root@slave1:/etc/profile	#将环境变量profile文件分发到slave1节点
+
+scp -r /etc/profile root@slave2:/etc/profile	#将环境变量profile文件分发到slave2节点
+
+scp -r /opt/module/scala-2.11.0 root@slave1:/opt/module		#将scala文件分发到slave1节点
+
+scp -r /opt/module/scala-2.11.0 root@slave2:/opt/module		#将scala文件分发到slave2节点
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;(分节点)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#生效环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;scala -version			#查看scala是否安装成功
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/MySQL%E8%8D%89%E7%A8%BF%E4%BD%BF%E7%94%A8/</guid>
+            <title>MySQL草稿使用</title>
+            <link>https://www.jackfruit.top/2023/02/27/MySQL%E8%8D%89%E7%A8%BF%E4%BD%BF%E7%94%A8/</link>
+            <category term="学习" scheme="https://www.jackfruit.top/categories/%E5%AD%A6%E4%B9%A0/" />
+            <category term="学习MySQL" scheme="https://www.jackfruit.top/tags/%E5%AD%A6%E4%B9%A0MySQL/" />
+            <pubDate>Mon, 27 Feb 2023 11:35:06 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;mysql7条消息-基础篇数据库-sql-入门教程_lucifer三思而后行的博客-csdn博客_sql数据库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#mysql7条消息-基础篇数据库-sql-入门教程_lucifer三思而后行的博客-csdn博客_sql数据库&#34;&gt;#&lt;/a&gt; MySQL（&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzUwNTQ2MDE2L2FydGljbGUvZGV0YWlscy8xMjAwNzAwMDM/b3BzX3JlcXVlc3RfbWlzYz0lN0IlMjJyZXF1ZXN0JTVGaWQlMjIlM0ElMjIxNjY1NzA3OTY5MTY3ODI0MTcwMjQ2MDclMjIlMkMlMjJzY20lMjIlM0ElMjIyMDE0MDcxMy4xMzAxMDIzMzQuLiUyMiU3RCZhbXA7cmVxdWVzdF9pZD0xNjY1NzA3OTY5MTY3ODI0MTcwMjQ2MDcmYW1wO2Jpel9pZD0wJmFtcDt1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfc2VhcmNoX3Jlc3VsdC5ub25lLXRhc2stYmxvZy0yfmFsbH50b3BfcG9zaXRpdmV+ZGVmYXVsdC0xLTEyMDA3MDAwMy1udWxsLW51bGwuMTQyJTVFdjU2JTVFanNfdG9wLDIwMSU1RXYzJTVFY29udHJvbF8xJmFtcDt1dG1fdGVybT0lRTYlOTUlQjAlRTYlOEQlQUUlRTUlQkElOTMmYW1wO3NwbT0xMDE4LjIyMjYuMzAwMS40MTg3&#34;&gt;(7 条消息) 基础篇：数据库 SQL 入门教程_Lucifer 三思而后行的博客 - CSDN 博客_sql 数据库&lt;/span&gt;）&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;create database company;	#创建数据库
+
+show databases;	#查看数据库
+
+use company;	#使用数据库
+
+show tables;	#查看所有表
+
+desc XXX;	#查看表结构
+
+#创建表
+create table company.staff(
+id int (4) primary key not null auto_increment,
+name varchar(255),
+sex varchar(255)
+);
+
+#查看表
+select * from staff;
+
+#插入数据
+insert into staff(name,sex) values(&#39;Thomas&#39;,&#39;Male&#39;);
+
+#插入数据到表格
+insert into staff values(2,&#39;Catalina&#39;,&#39;FeMale&#39;);
+
+#删除表
+drop table staff;
+
+#删除表数据
+delete from staff where name=&#39;Thomas&#39;;
+
+#修改表名
+alter table XXXX rename to XXXX;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;使用sqoop上传到hdfs&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用sqoop上传到hdfs&#34;&gt;#&lt;/a&gt; 使用 sqoop 上传到 hdfs&lt;/h2&gt;
+&lt;h3 id=&#34;模板&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#模板&#34;&gt;#&lt;/a&gt; 模板&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@master sqoop-1.4.7]# bin/sqoop import \
+--connect jdbc:mysql://master:3306/company \ #MySQL数据库的数据库端口和数据库名称
+--username root \ #mysql数据库用户
+--password 000000 \ #mysql密码
+--table staff \ #mysql中的表名
+--target-dir /user/company \ #导入到hdfs上的位置
+--delete-target-dir \ #如果存在相同文件夹删除
+--fields-terminated-by &amp;quot;\t&amp;quot; #按\t分割
+
+
+#参数解释
+--delete-target-dir ：目标目录存在就删除
+--target-dir：指定输出目录，不指定就直接在主目录下生产。
+--num-mappers 1：设置map的个数
+--direct：manager.DirectMySQLManager: Beginning mysqldump fast path import.使用这个命令会很快，本机装有mysql时，才可以使用。
+--fields-terminated-by &amp;quot;\t&amp;quot;：设置输出文件分分割方式
+--as-parquetfile :设置文件格式为parquetfile
+--split-by id :通常配合-m 参数使用。用于指定根据哪个字段进行划分并启动多少个maptask。
+--columns &amp;lt;col,col,col...&amp;gt; ：指定表中部分字段进行导入
+--query：直接查询
+--where &amp;lt;where clause&amp;gt; ：条件查询
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;全部导入&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bin/sqoop import --connect jdbc:mysql://192.168.128.160:3306/company --username root --password 123456 --table staff --target-dir /user/company --fields-terminated-by &amp;quot;\t&amp;quot; --delete-target-dir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查询导入&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bin/sqoop import --connect jdbc:mysql://192.168.182.10:3306/company --username root --password 123456 --table staff --target-dir /user/company --fields-terminated-by &amp;quot;\t&amp;quot; --query &#39;select name,sex from staff where id &amp;lt;=1 and $CONDITIONS;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;删除导入&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hadoop fs -rm -r /user/company
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;查看导入&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hdfs dfs -cat /user/company/part-m-00000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;导入指定列&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--columns id,sex \ #列名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;从mysql导入到hive&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#从mysql导入到hive&#34;&gt;#&lt;/a&gt; 从 MySQL 导入到 hive&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;全局导入&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bin/sqoop import \
+--connect jdbc:mysql://master:3306/company \
+--username root \
+--password 123456 \
+--table staff \
+--num-mappers 1 \
+--hive-import \ #导入hive的关键字
+--fields-terminated-by &amp;quot;\t&amp;quot; \
+--hive-overwrite \ 
+--hive-table staff_hive \	#hive的表名
+--hive-database ods	#导入到hive的数据库
+
+bin/sqoop import --connect jdbc:mysql://master:3306/company --username root --password 123456 --table user_info --num-mappers 1 --hive-import --fields-terminated-by &amp;quot;\t&amp;quot; --hive-overwrite --hive-table ods.user_info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;增量导入&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;添加
+--incremental lastmodified \
+--check-column insert_time \
+--last-value &amp;quot;2019-03-09 14:59:21&amp;quot; \
+
+--incremental	指定增量模式，可选append或者lastmodified，append不能用于hive
+--check-column	指定检查的列，也就是参考的增量列
+--last-value	指定增量列的最新数据
+--merge-key	指定参考的需要合并的列
+
+
+条件导入
+where，条件导入
+--where &amp;quot;XXX&amp;gt;XXX&amp;quot;
+
+columns,指定导入指定列
+--columns XXX，XXX
+
+query,导入查询结果
+--query ’‘
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;从hdfs下载到mysql先把mysql表格数据清空&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#从hdfs下载到mysql先把mysql表格数据清空&#34;&gt;#&lt;/a&gt; 从 hdfs 下载到 MySQL	(先把 MySQL 表格数据清空)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;#查看表
+select * from XXXX;
+#删除表数据
+delete from staff where name=&#39;XXXX&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;脚本文件	XXX.opt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export
+--connect
+jdbc:mysql://master:3306/company
+--username
+root
+--password
+123456
+--table	//数据库表名
+staff
+--num-mappers
+1
+--export-dir	//hdfs文件的位置
+/user/company
+--input-fields-terminated-by	
+&amp;quot;\t&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hadoop杀死正在运行的进程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hadoop杀死正在运行的进程&#34;&gt;#&lt;/a&gt; Hadoop 杀死正在运行的进程&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;hadoop job -list	# 查看当前任务列表
+hadoop job -kill job_id	# 杀掉某一任务
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE user_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    birth_date DATE NOT NULL
+);
+
+CREATE TABLE user_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    birth_date DATE NOT NULL
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;mysql创建临时表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#mysql创建临时表&#34;&gt;#&lt;/a&gt; MySQL 创建临时表&lt;/h3&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/Kafka%E5%AE%89%E8%A3%85/</guid>
+            <title>Kafka安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/Kafka%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:34:36 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;kafka安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#kafka安装&#34;&gt;#&lt;/a&gt; Kafka 安装&lt;/h1&gt;
+&lt;h3 id=&#34;1-解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-解压&#34;&gt;#&lt;/a&gt; 1、解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf /opt/software/kafka_2.11-2.0.0.tgz -C /opt/module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-修改配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-修改配置文件&#34;&gt;#&lt;/a&gt; 2、修改配置文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/kafka_2.11-2.0.0
+mkdir logs	运行日志存放的路径
+cd config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;vi server.properties&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#broker的全局唯一编号，不能重复
+broker.id=0		#需要操作，每台机器id号不一样
+#删除topic的功能使能
+delete.topic.enable=true	#需要操作
+#kafka运行日志存放的路径
+log.dirs=/opt/module/kafka_2.11-2.0.0/logs		#需要操作
+#配置zookeeper集群地址
+zookeeper.connect=master:2181,slave1:2181,slave2:2181		#需要操作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-配置环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-配置环境变量&#34;&gt;#&lt;/a&gt; 3、配置环境变量&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;vi /etc/profile&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#set kakfa
+export KAFKA_HOME=/opt/module/kafka_2.11-2.0.0
+export PATH=$PATH:$KAFKA_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#生效环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;四-同步其他虚拟机&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-同步其他虚拟机&#34;&gt;#&lt;/a&gt; 四、同步其他虚拟机&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;scp -r /etc/profile root@slave1:/etc/profile	#将环境变量profile文件分发到slave1节点
+scp -r /etc/profile root@slave2:/etc/profile	#将环境变量profile文件分发到slave2节点
+scp -r /opt/module/kafka_2.11-2.0.0 root@slave1:/opt/module	#将kafka文件分发到slave1节点
+scp -r /opt/module/kafka_2.11-2.0.0 root@slave2:/opt/module	#将kafka文件分发到slave2节点
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#分节点生效环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;五-修改分节点的serverproperties文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-修改分节点的serverproperties文件&#34;&gt;#&lt;/a&gt; 五、修改分节点的&lt;strong&gt; server.properties 文件&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;vi /opt/module/kafka_2.11-2.0.0/config/server.properties&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;broker.id=1		slave1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;broker.id=2		slave2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;六-启动&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-启动&#34;&gt;#&lt;/a&gt; 六、启动&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;先启动 zookeeper（三台机器一起）&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/zookeeper-3.4.6		#先进入zookeeper的目录
+bin/zkServer.sh start		#三台机器启动zookeeper
+bin/zkServer.sh status		#查看启动状态
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一个节点是 Leader，其余的结点是 Follower（Leader 不一定是主节点，系统随机分配的），即 zookeeper 启动成功！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;启动 kafka (三台机器一起)&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/kafka_2.11-2.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;bin/kafka-server-start.sh config/server.properties &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;按一下 enter&lt;/p&gt;
+&lt;p&gt;都有 kafka 进程表示成功&lt;/p&gt;
+&lt;h3 id=&#34;七-创建topic&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#七-创建topic&#34;&gt;#&lt;/a&gt; 七、创建 topic&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;2.2版本以上用这个
+kafka-topics.sh --create --bootstrap-server master:9092,slave1:9092,slave2:9092 --replication-factor 2 --partitions 2 --topic installtopic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;kafka-topics.sh --create --zookeeper master:2181,slave1:2181,slave2:2181 --replication-factor 2 --partitions 2 --topic installtopic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看指定的 topic&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kafka-topics.sh --describe --zookeeper master:2181,slave1:2181,slave2:2181 --topic installtopic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有可用 topic&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kafka-topics.sh --list --zookeeper master:2181,slave1:2181,slave2:2181
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/java%E5%AE%89%E8%A3%85/</guid>
+            <title>java安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/java%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:34:09 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;java安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#java安装&#34;&gt;#&lt;/a&gt; java 安装&lt;/h1&gt;
+&lt;h2 id=&#34;解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解压&#34;&gt;#&lt;/a&gt; 解压&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxf jdk-8u212-linux-x64.tar.gz -C /opt/module/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;配置环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#配置环境变量&#34;&gt;#&lt;/a&gt; 配置环境变量&lt;/h2&gt;
+&lt;p&gt;vi /etc/profi&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# java envirment
+export JAVA_HOME=/opt/module/jdk1.8.0_212
+export PATH=$PATH:$JAVA_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;使其生效&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使其生效&#34;&gt;#&lt;/a&gt; 使其生效&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;测试&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#测试&#34;&gt;#&lt;/a&gt; 测试&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;java -version
+
+javac
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/hive%E4%BD%BF%E7%94%A8/</guid>
+            <title>hive使用</title>
+            <link>https://www.jackfruit.top/2023/02/27/hive%E4%BD%BF%E7%94%A8/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:33:46 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;hive的使用&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hive的使用&#34;&gt;#&lt;/a&gt; hive 的使用&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cueWlpYmFpLmNvbS9oaXZlL2hpdmVfYWx0ZXJfdGFibGUuaHRtbA==&#34;&gt;Hive 修改表 - Hive 教程 (yiibai.com)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;查看库&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show databases;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建库&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;create schema xxxx；
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除库&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;drop database if exists XXX;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show tables;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;create table if not exists XXX(数据类型
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;drop table if exists XXXX;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看分区表结构&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;desc formatted 表名;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在 spark 运行打包程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bin/spark-submit --class Text01.test1 --master spark://master:7077 --conf spark.sql.catalogImplementation=hive /opt/spark_demo.jar 10	
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建静态分区&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;create table user_info(
+    id int,
+    name string,
+    operate_time date,
+    create_time date)
+    partitioned by (day string)
+    row format delimited
+    fields terminated by &#39;/t&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;静态分区写入数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--1、静态分区设置
+insert overwrite table user_info partition (day=&#39;2022-11-01&#39;)
+select id,name,operate_time,create_time	
+from user_info1 
+where create_time=&#39;2022-11-01&#39;;
+
+--2、查看分区
+show partitions user_info;
+
+--3、查看udata_partition数据
+select * from user_info; 
+
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/hive%E5%92%8Cmysql%E5%AE%89%E8%A3%85/</guid>
+            <title>hive和mysql安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/hive%E5%92%8Cmysql%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:33:20 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;hive和mysql安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hive和mysql安装&#34;&gt;#&lt;/a&gt; hive 和 mysql 安装&lt;/h1&gt;
+&lt;h3 id=&#34;一-解压-注意hive只需要在master节点上安装配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-解压-注意hive只需要在master节点上安装配置&#34;&gt;#&lt;/a&gt; 一、解压（# 注意：Hive 只需要在 master 节点上安装配置）&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd  /opt/software
+tar -zxvf apache-hive-2.3.4-bin.tar.gz -C /opt/module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;二-安装mysql&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-安装mysql&#34;&gt;#&lt;/a&gt; 二、安装 mysql&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;先卸载 mysql&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;	查看本机	rpm -qa | grep mariadb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;	卸载	rpm -e --nodeps XXXXXXXXXX
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar -xvf mysql-5.7.20-1.el6.x86_64.rpm-bundle.tar -C /opt/module
+
+cd /opt/module
+
+rpm -ivh mysql-community-common-5.7.20-1.el6.x86_64.rpm
+
+rpm -ivh mysql-community-libs-5.7.20-1.el6.x86_64.rpm
+
+rpm -ivh mysql-community-client-5.7.20-1.el6.x86_64.rpm
+
+rpm -ivh mysql-community-server-5.7.20-1.el6.x86_64.rpm --force --nodeps
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;* 检查一下 *&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rpm -qa | grep mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;* 启动服务 *&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;systemctl daemon-reload	#重载所有修改过的配置文件
+
+systemctl start mysqld	#开启服务
+
+systemctl enable mysqld #开机自启 若不成功也不影响
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;* 登录 MySQL 数据库 *&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grep &amp;quot;temporary password&amp;quot; /var/log/mysqld.log	 #获取初密码
+
+mysql -uroot -p	#登陆MySQL（注意中英文）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;*MySQL 密码安全策略设置 *&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set global validate_password_policy=0; #设置密码强度为低级
+
+set global validate_password_length=4;	#设置密码长度
+
+alter user &#39;root&#39;@&#39;localhost&#39; identified by &#39;123456&#39;;	#修改用户密码
+
+\q	#退出
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;* 设置远程登录 *&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mysql -uroot -p123456	#以新密码登陆MySQL
+
+create user &#39;root&#39;@&#39;%&#39; identified by &#39;123456&#39;;	#创建用户
+
+grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; with grant option;	#***\*允许远程连接\****
+
+flush privileges;	#刷新权限
+
+create database if not exists test;		#创建数据库test
+
+\q
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;第二种方式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#第二种方式&#34;&gt;#&lt;/a&gt; 第二种方式&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;解压并改名&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf /opt/software/mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz -C /opt/module
+
+mv mysql-5.7.30-linux-glibc2.12-x86_64 mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;创建数据目录并赋予权限&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p  /data/mysql              #创建目录
+chown mysql:mysql -R /data/mysql   #赋予权限
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;配置 my.cnf&lt;/strong&gt;	(新文件)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;vi /etc/my.cnf&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[mysqld]
+bind-address=0.0.0.0
+port=3306
+user=mysql
+basedir=/opt/module/mysql
+datadir=/data/mysql
+socket=/tmp/mysql.sock
+log-error=/data/mysql/mysql.err
+pid-file=/data/mysql/mysql.pid
+#character config
+character_set_server=utf8mb4
+symbolic-links=0
+explicit_defaults_for_timestamp=true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;进入 MySQL 的 bin 目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/mysql/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;初始化&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./mysqld --defaults-file=/etc/my.cnf --basedir=/opt/module/mysql/ --datadir=/data/mysql/ --user=mysql --initialize
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看密码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /data/mysql/mysql.err
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;先将 mysql.server 放置到 /etc/init.d/mysql 中&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service mysql start
+
+ps -ef|grep mysql
+
+./mysql -u root -p   #bin目录下
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再执行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SET PASSWORD = PASSWORD(&#39;123456&#39;);
+ALTER USER &#39;root&#39;@&#39;localhost&#39; PASSWORD EXPIRE NEVER;
+FLUSH PRIVILEGES;  
+\q
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再登陆&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;use mysql                                            #访问mysql库
+update user set host = &#39;%&#39; where user = &#39;root&#39;;      #使root能再任何host访问
+FLUSH PRIVILEGES;                                    #刷新
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;三-修改配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-修改配置文件&#34;&gt;#&lt;/a&gt; 三、修改配置文件&lt;/h3&gt;
+&lt;p&gt;配置环境文件&lt;/p&gt;
+&lt;h4 id=&#34;vi-etcprofile&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-etcprofile&#34;&gt;#&lt;/a&gt; vi /etc/profile&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;#set hive
+export HIVE_HOME=/opt/module/apache-hive-2.3.4-bin
+export PATH=$PATH:$HIVE_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source  /etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;将mysql依赖包放入master中&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#将mysql依赖包放入master中&#34;&gt;#&lt;/a&gt; 将 mysql 依赖包放入 master 中&lt;/h4&gt;
+&lt;h4 id=&#34;修改文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改文件&#34;&gt;#&lt;/a&gt; 修改文件&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;mkdir /opt/module/apache-hive-2.3.4-bin/warehouse
+
+cd /opt/module/apache-hive-2.3.4-bin/conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;vi-hive-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-hive-sitexml&#34;&gt;#&lt;/a&gt; vi hive-site.xml&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+&amp;lt;!-- Hive产生的元数据存放位置--&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;hive.metastore.warehouse.dir&amp;lt;/name&amp;gt;
+&amp;lt;value&amp;gt;/opt/module/apache-hive-2.3.4-bin/warehouse&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;!-- 数据库连接JDBC的URL地址--&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;javax.jdo.option.ConnectionURL&amp;lt;/name&amp;gt; 
+&amp;lt;value&amp;gt;jdbc:mysql://master:3306/hive?createDatabaseIfNotExist=true&amp;amp;amp;useSSL=false&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;!-- 数据库连接driver，即MySQL驱动--&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;javax.jdo.option.ConnectionDriverName&amp;lt;/name&amp;gt;
+&amp;lt;value&amp;gt;com.mysql.jdbc.Driver&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;!-- MySQL数据库用户名--&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;javax.jdo.option.ConnectionUserName&amp;lt;/name&amp;gt;
+&amp;lt;value&amp;gt;root&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;!-- MySQL数据库密码--&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;javax.jdo.option.ConnectionPassword&amp;lt;/name&amp;gt;
+&amp;lt;value&amp;gt;123456&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;hive.metastore.schema.verification&amp;lt;/name&amp;gt;
+&amp;lt;value&amp;gt;false&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;datanucleus.schema.autoCreateAll&amp;lt;/name&amp;gt;
+&amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;四-修改环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-修改环境变量&#34;&gt;#&lt;/a&gt; 四、修改环境变量&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/apache-hive-2.3.4-bin/conf
+
+mv hive-env.sh.template hive-env.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-hive-envsh&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-hive-envsh&#34;&gt;#&lt;/a&gt; vi &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2hpdmUtZW52LnNo&#34;&gt;hive-env.sh&lt;/span&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;HADOOP_HOME=/opt/module/hadoop-2.7.7
+export HIVE_CONF_DIR=/opt/module/apache-hive-2.3.4-bin/conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;schematool -initSchema -dbType mysql	初始化mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;五-启动mysql和hive&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-启动mysql和hive&#34;&gt;#&lt;/a&gt; 五、启动 Mysql 和 Hive&lt;/h3&gt;
+&lt;h4 id=&#34;启动hadoop集群只master上&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动hadoop集群只master上&#34;&gt;#&lt;/a&gt; 启动 hadoop 集群（只 master 上）&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/hadoop-2.7.7
+sbin/start-all.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;元数据初始化命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#元数据初始化命令&#34;&gt;#&lt;/a&gt; 元数据初始化命令&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;schematool -dbType mysql -initSchema
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;启动hive-client只master上&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动hive-client只master上&#34;&gt;#&lt;/a&gt; 启动 hive client (只 master 上)&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/apache-hive-2.3.4-bin
+bin/hive --service metastore &amp;amp;
+bin/hive
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;将 MySQL 驱动复制到 java 的 jre 下的 lib 下的 ext 目录下&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;六-测试hive是否启动成功&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-测试hive是否启动成功&#34;&gt;#&lt;/a&gt; 六、测试 hive 是否启动成功&lt;/h3&gt;
+&lt;h4 id=&#34;查看数据库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看数据库&#34;&gt;#&lt;/a&gt; 查看数据库&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;hive&amp;gt;show databases;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;创建数据库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建数据库&#34;&gt;#&lt;/a&gt; 创建数据库&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;hive&amp;gt;create database testbase;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;复制一个master会话查看一下master进程&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#复制一个master会话查看一下master进程&#34;&gt;#&lt;/a&gt; 复制一个 master 会话，查看一下 master 进程&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;如果可以查看以及建立数据库，进程中有RunJar进程，则代表Mysql和Hive安装成功啦~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;解决版本冲突问题slave1-操作&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解决版本冲突问题slave1-操作&#34;&gt;#&lt;/a&gt; 解决版本冲突问题 (slave1 操作)&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cp /opt/module/apache-hive-2.3.4-bin/lib/jline-2.12.jar /opt/module/hadoop-2.7.7/share/hadoop/yarn/lib
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/hadoop-%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+            <title>hadoop 伪分布式安装配置</title>
+            <link>https://www.jackfruit.top/2023/02/27/hadoop-%E4%BC%AA%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:32:26 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;在伪分布式里我们只需要改三个配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#在伪分布式里我们只需要改三个配置文件&#34;&gt;#&lt;/a&gt; 在伪分布式里我们只需要改三个配置文件&lt;/h2&gt;
+&lt;h3 id=&#34;core-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#core-sitexml&#34;&gt;#&lt;/a&gt; core-site.xml&lt;/h3&gt;
+&lt;p&gt;文件包含了 NameNode 主机地址，监听端口等信息，对于这个伪分布式模型来说，我的主机地址为 master，NameNode 默认使用的端口为 9000。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+&amp;lt;!-- 指定HDFS中NameNode的地址 --&amp;gt;
+&amp;lt;property&amp;gt;
+ &amp;lt;name&amp;gt;fs.defaultFS&amp;lt;/name&amp;gt;
+ &amp;lt;value&amp;gt;hdfs://master:9000&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+ &amp;lt;!-- 指定hadoop运行时产生文件的存储目录 --&amp;gt;
+&amp;lt;property&amp;gt;
+ &amp;lt;name&amp;gt;hadoop.tmp.dir&amp;lt;/name&amp;gt;
+ &amp;lt;value&amp;gt;/opt/module/hadoop-2.7.7/tmp&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;hdfs-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hdfs-sitexml&#34;&gt;#&lt;/a&gt; hdfs-site.xml&lt;/h3&gt;
+&lt;p&gt;用于配置 / HDFS 的相关属性，例如数据块的副本参数，数据块的副本对于伪分布式来说应该为 1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+&amp;lt;!-- 指定HDFS副本的数量 --&amp;gt;
+   &amp;lt;property&amp;gt;
+      &amp;lt;name&amp;gt;dfs.replication&amp;lt;/name&amp;gt;
+      &amp;lt;value&amp;gt;1&amp;lt;/value&amp;gt;
+   &amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;hadoop-envsh&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hadoop-envsh&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2hhZG9vcC1lbnYuc2g=&#34;&gt;hadoop-env.sh&lt;/span&gt;&lt;/h3&gt;
+&lt;p&gt;由于 Hadoop 是 java 进程，所以需要添加 jdk&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/opt/module/jdk1.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;格式化数据&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#格式化数据&#34;&gt;#&lt;/a&gt; 格式化数据&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;hdfs namenode -format
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;启动集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动集群&#34;&gt;#&lt;/a&gt; 启动集群&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sbin/start-all.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;查看集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看集群&#34;&gt;#&lt;/a&gt; 查看集群&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;jps
+
+http://192.168.23.48:50070
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/hadoop-%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+            <title>hadoop 完全分布式安装配置</title>
+            <link>https://www.jackfruit.top/2023/02/27/hadoop-%E5%AE%8C%E5%85%A8%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:31:22 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;完全分布式安装hadoop&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#完全分布式安装hadoop&#34;&gt;#&lt;/a&gt; 完全分布式安装 hadoop&lt;/h1&gt;
+&lt;h3 id=&#34;1-新建optsoftware-使用xftp将hadoop和java的压缩包上传&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-新建optsoftware-使用xftp将hadoop和java的压缩包上传&#34;&gt;#&lt;/a&gt; 1、新建 /opt/software 使用 xftp 将 hadoop 和 java 的压缩包上传&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/
+mkdir software
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-新建module文件夹存放解压后的hadoop&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#2-新建module文件夹存放解压后的hadoop&#34;&gt;#&lt;/a&gt; 2、新建 module 文件夹存放解压后的 hadoop&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;mkdir module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3-解压hadoop&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#3-解压hadoop&#34;&gt;#&lt;/a&gt; 3、解压 hadoop&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/software
+tar -zxf hadoop-2.7.7.tar.gz -C /opt/module/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4-配置环境&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#4-配置环境&#34;&gt;#&lt;/a&gt; 4、配置环境&lt;/h3&gt;
+&lt;h4 id=&#34;vi-etcprofile&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-etcprofile&#34;&gt;#&lt;/a&gt; vi /etc/profile&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;#hadoop
+export HADOOP_HOME=/opt/module/hadoop-2.7.7
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5-使其生效&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#5-使其生效&#34;&gt;#&lt;/a&gt; 5、使其生效&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6-验证&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#6-验证&#34;&gt;#&lt;/a&gt; 6、验证&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;hadoop version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;7-配置hadoop文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#7-配置hadoop文件&#34;&gt;#&lt;/a&gt; 7、配置 hadoop 文件&lt;/h3&gt;
+&lt;h4 id=&#34;vi-core-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-core-sitexml&#34;&gt;#&lt;/a&gt; vi core-site.xml&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+&amp;lt;!-- 指定HDFS中NameNode的地址 --&amp;gt;
+&amp;lt;property&amp;gt;
+ &amp;lt;name&amp;gt;fs.defaultFS&amp;lt;/name&amp;gt;
+ &amp;lt;value&amp;gt;hdfs://master:9000&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+ &amp;lt;!-- 指定hadoop运行时产生文件的存储目录 --&amp;gt;
+&amp;lt;property&amp;gt;
+ &amp;lt;name&amp;gt;hadoop.tmp.dir&amp;lt;/name&amp;gt;
+ &amp;lt;value&amp;gt;/opt/module/hadoop-2.7.7/tmp&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-hdfs-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-hdfs-sitexml&#34;&gt;#&lt;/a&gt; vi hdfs-site.xml&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+ &amp;lt;property&amp;gt;
+	&amp;lt;name&amp;gt;dfs.replication&amp;lt;/name&amp;gt;
+  	&amp;lt;value&amp;gt;3&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+  	&amp;lt;name&amp;gt;dfs.namenode.secondary.http-address&amp;lt;/name&amp;gt;
+	&amp;lt;value&amp;gt;slave1:50090&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+	&amp;lt;name&amp;gt;dfs.data.dir&amp;lt;/name&amp;gt;
+	&amp;lt;value&amp;gt;/opt/module/hadoop-2.7.7/tmp/data&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+	&amp;lt;name&amp;gt;dfs.name.dir&amp;lt;/name&amp;gt;
+	&amp;lt;value&amp;gt;/opt/module/hadoop-2.7.7/tmp/name&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;* 配置文件 slaves slaves 文件里面记录的是集群里所有 DataNode 的主机名 *&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;h4 id=&#34;vi-slaves&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-slaves&#34;&gt;#&lt;/a&gt; vi slaves&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;master
+slave1
+slave2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-yarn-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-yarn-sitexml&#34;&gt;#&lt;/a&gt; vi yarn-site.xml&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+&amp;lt;!-- Site specific YARN configuration properties --&amp;gt;
+&amp;lt;!-- reducer获取数据的方式 --&amp;gt;
+&amp;lt;property&amp;gt;
+ &amp;lt;name&amp;gt;yarn.nodemanager.aux-services&amp;lt;/name&amp;gt;
+ &amp;lt;value&amp;gt;mapreduce_shuffle&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;!-- 指定YARN的ResourceManager的地址 --&amp;gt;
+&amp;lt;property&amp;gt;
+&amp;lt;name&amp;gt;yarn.resourcemanager.hostname&amp;lt;/name&amp;gt;
+&amp;lt;value&amp;gt;master&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;!-- 关闭虚拟内存的检测 --&amp;gt;
+ &amp;lt;property&amp;gt;  
+    &amp;lt;name&amp;gt;yarn.nodemanager.vmem-check-enabled&amp;lt;/name&amp;gt;
+    &amp;lt;value&amp;gt;false&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt; 
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-yarn-envsh&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-yarn-envsh&#34;&gt;#&lt;/a&gt; vi &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3lhcm4tZW52LnNo&#34;&gt;yarn-env.sh&lt;/span&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/opt/module/jdk1.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-hadoop-envsh&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-hadoop-envsh&#34;&gt;#&lt;/a&gt; vi &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2hhZG9vcC1lbnYuc2g=&#34;&gt;hadoop-env.sh&lt;/span&gt;&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/opt/module/jdk1.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;vi-mapred-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#vi-mapred-sitexml&#34;&gt;#&lt;/a&gt; vi mapred-site.xml&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;先改名，因为本身是没有mapred-site.xml这个文件的
+
+mv mapred-site.xml.template mapred-site.xml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+&amp;lt;!-- 指定mr运行在yarn上 --&amp;gt;
+ &amp;lt;property&amp;gt;
+	&amp;lt;name&amp;gt;mapreduce.framework.name&amp;lt;/name&amp;gt;
+	&amp;lt;value&amp;gt;yarn&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+	&amp;lt;name&amp;gt;mapreduce.jobhistory.address&amp;lt;/name&amp;gt;
+	&amp;lt;value&amp;gt;master:10020&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+	&amp;lt;name&amp;gt;mapreduce.jobhistory.webapp.address&amp;lt;/name&amp;gt;
+	&amp;lt;value&amp;gt;master:19888&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;8-把master下修改的文件分发到slave1和slave2下&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#8-把master下修改的文件分发到slave1和slave2下&#34;&gt;#&lt;/a&gt; 8、把 master 下修改的文件分发到 slave1 和 slave2 下&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;scp -r /opt/module/ root@slave1:/opt
+
+scp -r /opt/module/ root@slave2:/opt
+
+scp -r /etc/profile root@slave1:/etc/profile
+
+scp -r /etc/profile root@slave2:/etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile	#分别在两个分节点上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;9-测试集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#9-测试集群&#34;&gt;#&lt;/a&gt; 9、测试集群&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;hdfs namenode -format	先格式化（只在主节点上）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;启动&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动&#34;&gt;#&lt;/a&gt; 启动&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;start-all.sh	#只在主节点上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;jps
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;打开浏览器-httpmaster50070&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#打开浏览器-httpmaster50070&#34;&gt;#&lt;/a&gt; 打开浏览器 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL21hc3Rlcjo1MDA3MC8=&#34;&gt;http://master:50070/&lt;/span&gt;&lt;/h5&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/hadoop-HA%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+            <title>hadoop HA安装配置</title>
+            <link>https://www.jackfruit.top/2023/02/27/hadoop-HA%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:30:26 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;hadoop-ha安装配置&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hadoop-ha安装配置&#34;&gt;#&lt;/a&gt; Hadoop HA 安装配置&lt;/h1&gt;
+&lt;h2 id=&#34;hdfs-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hdfs-sitexml&#34;&gt;#&lt;/a&gt; hdfs-site.xml&lt;/h2&gt;
+&lt;p&gt;Hadoop 守护进程的配置项&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt; dfs.replication &amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;3&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.nameservices&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;mycluster&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+&amp;lt;!-- 集群中NameNode节点都有哪些 --&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.ha.namenodes.mycluster&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;nn1,nn2&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- nn1的RPC通信地址 --&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.namenode.rpc-address.mycluster.nn1&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;master:8020&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- nn2的RPC通信地址 --&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.namenode.rpc-address.mycluster.nn2&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;slave1:8020&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- nn1的http通信地址 --&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.namenode.http-address.mycluster.nn1&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;master:50070&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- nn2的http通信地址 --&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.namenode.http-address.mycluster.nn2&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;slave1:50070&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+ &amp;lt;!-- 指定NameNode元数据在JournalNode上的存放位置 --&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.namenode.shared.edits.dir&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;qjournal://master:8485;slave1:8485;slave2:8485/mycluster&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- 配置隔离机制，即同一时刻只能有一台服务器对外响应 --&amp;gt;
+      
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.ha.fencing.methods&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;shell(/bin/true)&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+
+        &amp;lt;!-- 使用隔离机制时需要ssh无秘钥登录--&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.ha.fencing.ssh.private-key-files&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;/root/.ssh/id_rsa&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- 声明journalnode服务器存储目录--&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.journalnode.edits.dir&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;/opt/modules/hadoop-2.6.0/data/jn&amp;lt;/value&amp;gt; 
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- 关闭权限检查--&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.permissions.enable&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;false&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;!-- 访问代理类：client，mycluster，active配置失败自动切换实现方式--&amp;gt;
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;dfs.client.failover.proxy.provider.mycluster&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;core-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#core-sitexml&#34;&gt;#&lt;/a&gt; core-site.xml&lt;/h2&gt;
+&lt;p&gt;Hadoop Core 的配置项&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+ &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;fs.defaultFS&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;hdfs://mycluster&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+
+        &amp;lt;property&amp;gt;
+                &amp;lt;name&amp;gt;hadoop.tmp.dir&amp;lt;/name&amp;gt;
+                &amp;lt;value&amp;gt;/opt/module/hadoop-2.7.7/data&amp;lt;/value&amp;gt;
+        &amp;lt;/property&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hadoop-envsh&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hadoop-envsh&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2hhZG9vcC1lbnYuc2g=&#34;&gt;hadoop-env.sh&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;配置 java 路径，同时也记录了脚本中要用到的环境变量，以运行 hadoop&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/opt/module/jdk1.8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;slaves&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#slaves&#34;&gt;#&lt;/a&gt; slaves&lt;/h2&gt;
+&lt;p&gt;记录的是集群里所有 DataNode 的主机名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;master
+slave1
+slave2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;yanr-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#yanr-sitexml&#34;&gt;#&lt;/a&gt; yanr-site.xml&lt;/h2&gt;
+&lt;p&gt;主要记录了 resourcemanager 的配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+
+&amp;lt;!-- Site specific YARN configuration properties --&amp;gt;
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.nodemanager.aux-services&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;mapreduce_shuffle&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+ &amp;lt;!--启用resourcemanager ha--&amp;gt;
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.resourcemanager.ha.enabled&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+    &amp;lt;!--声明两台resourcemanager的地址--&amp;gt;
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.resourcemanager.cluster-id&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;cluster-yarn1&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.resourcemanager.ha.rm-ids&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;rm1,rm2&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+	&amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.resourcemanager.hostname.rm1&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;slave1&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.resourcemanager.hostname.rm2&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;slave2&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+    &amp;lt;!--指定zookeeper集群的地址--&amp;gt;
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.resourcemanager.zk-address&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;master:2181,slave1:2181,slave2:2181&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+    &amp;lt;!--启用自动恢复--&amp;gt;
+    &amp;lt;property&amp;gt;
+        &amp;lt;name&amp;gt;yarn.resourcemanager.recovery.enabled&amp;lt;/name&amp;gt;
+        &amp;lt;value&amp;gt;true&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+
+    &amp;lt;!--指定resourcemanager的状态信息存储在zookeeper集群--&amp;gt;
+    &amp;lt;property&amp;gt;
+     &amp;lt;name&amp;gt;yarn.resourcemanager.store.class&amp;lt;/name&amp;gt;
+     &amp;lt;value&amp;gt;org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore&amp;lt;/value&amp;gt;
+    &amp;lt;/property&amp;gt;
+    
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;mapred-sitexml&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#mapred-sitexml&#34;&gt;#&lt;/a&gt; mapred-site.xml&lt;/h2&gt;
+&lt;p&gt;MapReduce 守护进程的配置项&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!--指定运行mapreduce的环境是yarn--&amp;gt;
+&amp;lt;property&amp;gt;
+  &amp;lt;name&amp;gt;mapreduce.framework.name&amp;lt;/name&amp;gt;
+  &amp;lt;value&amp;gt;yarn&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/flume%E5%AE%89%E8%A3%85%EF%BC%88%E5%8C%85%E5%90%ABhdfs%E6%93%8D%E4%BD%9C%EF%BC%89/</guid>
+            <title>flume安装（包含hdfs操作）</title>
+            <link>https://www.jackfruit.top/2023/02/27/flume%E5%AE%89%E8%A3%85%EF%BC%88%E5%8C%85%E5%90%ABhdfs%E6%93%8D%E4%BD%9C%EF%BC%89/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:29:22 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;flume-安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#flume-安装&#34;&gt;#&lt;/a&gt; flume 安装&lt;/h1&gt;
+&lt;h3 id=&#34;1-解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#1-解压&#34;&gt;#&lt;/a&gt; 1、解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf /opt/software/apache-flume-1.7.0-bin.tar.gz -C /opt/module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;二-配置-flume-envsh&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-配置-flume-envsh&#34;&gt;#&lt;/a&gt; 二、配置 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2ZsdW1lLWVudi5zaA==&#34;&gt;flume-env.sh&lt;/span&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;cd /opt/module/apache-flume-1.7.0-bin/conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;mv flume-env.sh.template flume-env.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;vi &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2ZsdW1lLWVudi5zaA==&#34;&gt;flume-env.sh&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export JAVA_HOME=/opt/module/jdk1.8.0_212
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;三-配置环境变量&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-配置环境变量&#34;&gt;#&lt;/a&gt; 三、配置环境变量&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;vi /etc/profile&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#set flume
+export FLUME_HOME=/opt/module/apache-flume-1.7.0-bin
+export FLUME_CONF_DIR=$FLUME_HOME/conf
+export PATH=$PATH:$FLUME_HOME/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;source /etc/profile		#生效环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;四-查看flume版本&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#四-查看flume版本&#34;&gt;#&lt;/a&gt; 四、查看 flume 版本&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;flume-ng version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;五-配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-配置文件&#34;&gt;#&lt;/a&gt; 五、配置文件&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;1. 将 hadoop 的 hdfs-site.xml 和 core-site.xml 放到 flume/conf 下&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp $HADOOP_HOM/etc/hadoop/core-site.xml $FLUME_HOME/conf/
+cp $HADOOP_HOM/etc/hadoop/hdfs-site.xml $FLUME_HOME/conf/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;2. 将 hadoop 的 jar 包拷贝到 flume 的 lib 目录下&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp $HADOOP_HOME/share/hadoop/common/hadoop-common-2.7.7.jar  $FLUME_HOME/lib/
+cp $HADOOP_HOME/share/hadoop/common/lib/hadoop-auth-2.7.7.jar   $FLUME_HOME/lib/
+cp $HADOOP_HOME/share/hadoop/common/lib/commons-configuration-1.6.jar   $FLUME_HOME/lib/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;3. 配置 flume2.conf&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;创建监控文件夹&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir /logs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在 flume 安装目录下的 conf 下创建一个 flume2.conf 文件，并写入配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#定义agent名， source、channel、sink的名称
+a1.sources = r1
+a1.channels = c1
+a1.sinks = k1
+
+#具体定义source
+a1.sources.r1.type = spooldir
+#先创建此目录，保证里面空的
+a1.sources.r1.spoolDir = /logs
+
+#具体定义sink
+a1.sinks.k1.type = hdfs
+
+#集群的nameservers名字     
+a1.sinks.k1.hdfs.path = hdfs://master:9000/tmp/flume
+
+a1.channels.c1.type=file
+
+#组装source、channel、sink
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;4. 启动 flume (保证首先启动 hdfs)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在 /opt/module/flume-1.7.0 目录下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bin/flume-ng agent -n a1 -f conf/flume2.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;5. 测试&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;重新打开一个窗口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cp /opt/module/hadoop-2.7.7/logs/hadoop-root-datanode-master.log /logs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;6. 查看&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hadoop fs -cat /tmp/flume/XXXXXXXXX
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;备注：&lt;/p&gt;
+&lt;p&gt;Hadoop 文件修改方式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rm 删除目录或者文件
+
+使用方法:hadoop fs -rm [文件路径]  删除文件夹加上 -r
+示例: hadoop fs -rm /test1.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;cat 查看文件内容
+
+使用方法：hadoop fs -cat URI [URI …]
+示例： hadoop fs -cat /in/test2.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ls 显示目录下的所有文件或者文件夹
+
+使用方法： hadoop fs -ls [uri形式目录]
+示例: hadoop fs –ls /    显示根目录下的所有文件和目录
+
+显示目录下的所有文件可以加 -R 选项
+示例: hadoop fs -ls -R /
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;copyFromLocal 复制本地文件到hdfs
+
+使用方法：hadoop fs-copyFromLocal &amp;lt;localsrc&amp;gt; URI
+除了限定源路径是一个本地文件外，和put命令相似
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;get 复制文件到本地系统
+
+使用方法：hadoop fs -get[-ignorecrc] [-crc] &amp;lt;src&amp;gt; &amp;lt;localdst&amp;gt; 
+复制文件到本地文件系统。可用-ignorecrc选项复制CRC校验失败的文件。使用-crc选项复制文件以及CRC信息。
+示例：hadoop fs -get/word /usr/wisedu/temp/word.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;copyToLocal 复制 文件到本地系统
+
+使用方法：hadoop fs-copyToLocal [-ignorecrc] [-crc] URI &amp;lt;localdst&amp;gt;
+除了限定目标路径是一个本地文件外，和get命令类似。
+示例：hadoop fs - copyToLocal/word /usr/wisedu/temp/word.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;put 复制文件。将文件复制到hdfs系统中，也可以是从标准输入中读取文件，此时的dst是一个文件
+
+使用方法: hadoop fs -put &amp;lt;localsrc&amp;gt; ... &amp;lt;dst&amp;gt;
+示例：Hadoop fs -put /usr/wisedu/temp/test1.txt /
+从标准输入中读取文件：hadoop fs -put -/in/myword
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;cp 复制系统内文件
+ 
+使用方法：hadoopfs -cp URI [URI …] &amp;lt;dest&amp;gt;
+将文件从源路径复制到目标路径。这个命令允许有多个源路径，此时目标路径必须是一个目录。 
+示例：hadoop fs -cp /in/myword/word
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;mv 将文件从源路径移动到目标路径。这个命令允许有多个源路径，此时目标路径必须是一个目录。不允许在不同的文件系统间移动文件。
+
+使用方法：hadoop fs -mv URI [URI …] &amp;lt;dest&amp;gt;
+示例：hadoop fs -mv /in/test2.txt /test2.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;du 显示文件大小。显示目录中所有文件的大小。
+
+使用方法：hadoop fs -du URI [URI …]
+示例: hadoop fs -du /
+
+显示当前目录或者文件夹的大小可加选项 -s
+示例: hadoop fs -du -s /
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/flink%E5%AE%89%E8%A3%85/</guid>
+            <title>flink安装</title>
+            <link>https://www.jackfruit.top/2023/02/27/flink%E5%AE%89%E8%A3%85/</link>
+            <category term="Hadoop搭建" scheme="https://www.jackfruit.top/categories/Hadoop%E6%90%AD%E5%BB%BA/" />
+            <category term="搭建" scheme="https://www.jackfruit.top/tags/%E6%90%AD%E5%BB%BA/" />
+            <pubDate>Mon, 27 Feb 2023 11:27:53 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;flink安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#flink安装&#34;&gt;#&lt;/a&gt; flink 安装&lt;/h1&gt;
+&lt;h3 id=&#34;解压&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解压&#34;&gt;#&lt;/a&gt; 解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;tar -zxvf /opt/software/flink-1.10.2-bin-scala_2.11.tgz -C /opt/module
+
+cd /opt/module/flink-1.10.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;修改配置文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#修改配置文件&#34;&gt;#&lt;/a&gt; 修改配置文件&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;vi conf/flink-conf.yaml&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;jobmanager.rpc.address: master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;vi conf/slaves&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;slave1
+slave2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;vi conf/masters&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;同步节点&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#同步节点&#34;&gt;#&lt;/a&gt; 同步节点&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;scp -r /opt/module/flink-1.10.2 root@slave1:/opt/module
+scp -r /opt/module/flink-1.10.2 root@slave2:/opt/module
+scp -r /etc/profile root@slave1:/etc/profile	#将环境变量profile文件分发到slave1节点
+scp -r /etc/profile root@slave2:/etc/profile	#将环境变量profile文件分发到slave2节点
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;启动集群&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#启动集群&#34;&gt;#&lt;/a&gt; 启动集群&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;start-cluster.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;http://master:8081   访问web界面
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;问题&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#问题&#34;&gt;#&lt;/a&gt; 问题&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;export HADOOP_CLASSPATH=`hadoop classpath`
+
+hadoop classpath
+
+再启动
+
+stop-cluster.sh	#停止集群
+&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/27/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%90%AD%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E5%BE%97/</guid>
+            <title>学习Hadoop</title>
+            <link>https://www.jackfruit.top/2023/02/27/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%90%AD%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E5%BE%97/</link>
+            <pubDate>Mon, 27 Feb 2023 10:52:12 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;第一次编写个人博客づ-̄3-̄づ️~&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#第一次编写个人博客づ-̄3-̄づ️~&#34;&gt;#&lt;/a&gt; 第一次编写个人博客（づ￣3￣）づ╭❤️～&lt;/h3&gt;
+&lt;h5 id=&#34;收获&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#收获&#34;&gt;#&lt;/a&gt; 收获😊：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;	第一次编写博客是套用别人的方法使用的，外观、图片、CSS样式、渲染器等等等....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​	&lt;strong&gt;收获到许多，了解到一个网站是如何建成的（虽然是最简单搭建，用时：5 个小时多一点～～～）。比如说如何建仓库，无后端评论区，搜索引擎等，，，这些都是委托在第三方平台上搭建起来的，代码没改太多（都是 copy 别人的样式，主题，，）。现在先模仿，后期再慢慢摸索。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个网站我也会维护下去，但是至于是啥时候更新就不一定了。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">https://www.jackfruit.top/2023/02/26/hello-world/</guid>
+            <title>Hello World</title>
+            <link>https://www.jackfruit.top/2023/02/26/hello-world/</link>
+            <pubDate>Sun, 26 Feb 2023 17:52:10 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
+&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo new &lt;span class=&#34;token string&#34;&gt;&#34;My New Post&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo generate&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo deploy&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
